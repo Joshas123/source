@@ -248,13 +248,13 @@
         retrieveSettings: retrieveSettings,
         retrieveFromStorage: retrieveFromStorage,
         settings: {
-            botName: "basicBot",
-            language: "english",
+            botName: "Gatavas",
+            language: "lithuania",
             chatLink: "https://rawgit.com/basicBot/source/master/lang/en.json",
             scriptLink: "https://rawgit.com/basicBot/source/master/basicBot.js",
             roomLock: false, // Requires an extension to re-load the script
             startupCap: 1, // 1-200
-            startupVolume: 0, // 0-100
+            startupVolume: 10, // 0-100
             startupEmoji: false, // true or false
             autowoot: true,
             autoskip: false,
@@ -269,20 +269,20 @@
             lockGuard: false,
             maximumLocktime: 10,
             cycleGuard: true,
-            maximumCycletime: 10,
-            voteSkip: false,
-            voteSkipLimit: 10,
+            maximumCycletime: 5,
+            voteSkip: true,
+            voteSkipLimit: 5,
             historySkip: false,
             timeGuard: true,
-            maximumSongLength: 10,
+            maximumSongLength: 5,
             autodisable: false,
             commandCooldown: 30,
             usercommandsEnabled: true,
-            thorCommand: false,
+            thorCommand: true,
             thorCooldown: 10,
             skipPosition: 3,
             skipReasons: [
-                ["theme", "This song does not fit the room theme. "],
+                ["prono", "Neleisk pornuhos. "],
                 ["op", "This song is on the OP list. "],
                 ["history", "This song is in the history. "],
                 ["mix", "You played a mix, which is against the rules. "],
@@ -379,13 +379,13 @@
                     var ind = Math.floor(Math.random() * basicBot.room.roulette.participants.length);
                     var winner = basicBot.room.roulette.participants[ind];
                     basicBot.room.roulette.participants = [];
-                    var pos = Math.floor((Math.random() * API.getWaitList().length) + 1);
+                    var pos = Math.floor((1() * API.getWaitList().length) + 1);
                     var user = basicBot.userUtilities.lookupUser(winner);
                     var name = user.username;
                     API.sendChat(subChat(basicBot.chat.winnerpicked, {name: name, position: pos}));
                     setTimeout(function (winner, pos) {
-                        basicBot.userUtilities.moveUser(winner, pos, false);
-                    }, 1 * 1000, winner, pos);
+                        basicBot.userUtilities.moveUser(winner, pos, true);
+                    }, 1 * 1, winner, pos);
                 }
             },
             usersUsedThor: []
@@ -712,7 +712,7 @@
                 var id = dj.id;
                 var waitlistlength = API.getWaitList().length;
                 var locked = false;
-                basicBot.room.queueable = false;
+                basicBot.room.queueable = true;
 
                 if (waitlistlength == 50) {
                     basicBot.roomUtilities.booth.lockBooth();
@@ -1291,7 +1291,7 @@
                 'gringo', 'fuder', 'foder', 'hua', 'ahue', 'modafuka', 'modafoka', 'mudafuka', 'mudafoka', 'ooooooooooooooo', 'foda'
             ],
             curses: [
-                'nigger', 'faggot', 'nigga', 'niqqa', 'motherfucker', 'modafocka'
+                'blet', 'nx', 'dx', 'niqqa', 'motherfucker', 'modafocka'
             ]
         },
         connectAPI: function () {
